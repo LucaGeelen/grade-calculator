@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur de Notes Académiques</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Simulateur de Notes</h1>
+            <p class="subtitle">Calculez votre moyenne académique en temps réel — Échelle /20</p>
+        </header>
+
+        <div class="config-section">
+            <div class="config-header">
+                <h2>Configuration</h2>
+            </div>
+            
+            <div class="config-controls">
+                <div class="control-group">
+                    <label for="subject-count">Nombre de matières</label>
+                    <div class="number-input-wrapper">
+                        <button class="stepper-btn" id="decrease-subjects" aria-label="Diminuer">−</button>
+                        <input type="number" id="subject-count" min="2" max="10" value="2" readonly>
+                        <button class="stepper-btn" id="increase-subjects" aria-label="Augmenter">+</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="calculation-mode">Mode de calcul</label>
+                    <select id="calculation-mode" class="select-input">
+                        <option value="arithmetic">Moyenne Arithmétique</option>
+                        <option value="geometric">Moyenne Géométrique</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="subjects-section" id="subjects-container">
+            <!-- Subjects will be dynamically generated here -->
+        </div>
+
+        <div class="weight-validation" id="weight-validation">
+            <div class="validation-content">
+                <span class="validation-label">Somme des pondérations :</span>
+                <span class="validation-value" id="total-weight">0%</span>
+                <span class="validation-status" id="weight-status"></span>
+            </div>
+        </div>
+
+        <div class="result-section">
+            <div class="result-content">
+                <div class="result-label">Résultat Final</div>
+                <div class="result-input-wrapper">
+                    <div class="result-value-container">
+                        <input 
+                            type="number" 
+                            class="result-input" 
+                            id="result-input"
+                            min="0"
+                            max="20"
+                            step="0.01"
+                            placeholder="—"
+                        >
+                    </div>
+                    <button class="freeze-btn" id="freeze-btn" aria-label="Bloquer le résultat">
+                        <span class="freeze-icon" id="freeze-icon">🔓</span>
+                        <span class="freeze-text" id="freeze-text">Bloquer</span>
+                    </button>
+                </div>
+                <div class="result-info" id="result-info"></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Les calculs sont effectués en temps réel. Ajustez les curseurs pour simuler différents scénarios.</p>
+        </footer>
+    </div>
+
+    <script src="calculator.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
